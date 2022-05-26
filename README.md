@@ -7,7 +7,7 @@ Project created on May 2nd 2022
 Nanodegree project
 
 ### Description
-Describe what your project is about and what it does
+Exciting project to share my Bike Project brilliance
 
 ### Files used
 Include the files used
