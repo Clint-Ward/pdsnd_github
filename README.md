@@ -10,7 +10,10 @@ Nanodegree project
 Exciting project to share my Bike Project brilliance
 
 ### Files used
-Include the files used
+The project used 3 csv files for the source data:
+chicago.csv
+new_york_city.csv
+washington.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
