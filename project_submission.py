@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import time
-#define dictionaries
+#define dictionaries and lists
 city_set=('washington', 'new york city', 'chicago')
 day_set=('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all')
 month_set=('january' ,'february' , 'march' , 'april' , 'may' , 'june' , 'july' , 'august' , 'september' ,
@@ -13,7 +13,7 @@ CITY_DATA={ 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 DAY_DATA={ 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday', 7: 'Sunday' }
-MONTH_DATA={1:  'January' , 2:  'February' , 3:  'March' , 4:  'April' , 5:  'May' , 6:  'June' , 7:  'July' , 
+MONTH_DATA={1:  'January' , 2:  'February' , 3:  'March' , 4:  'April' , 5:  'May' , 6:  'June' , 7:  'July' ,
             8:  'August' , 9:  'September' , 10:  'October' , 11:  'November' , 12:  'December' }
 #Fuctions
 def get_filters():
@@ -21,7 +21,7 @@ def get_filters():
     while True:
         try:
             city_input = (input("Hello World! ;) Welcome to BykShare, your Bike Share analysis tool! \
-            Please select a city from Chicago, New York City or Washington")).lower() 
+            Please select a city from Chicago, New York City or Washington")).lower()
             if city_input in city_set:
                 print('Thanks!')
                 break;
@@ -32,7 +32,7 @@ def get_filters():
 
     while True:
         try:
-            month_input = (input("Please input the name of the month to filter by, or ""all"" to apply no month filter")).lower() 
+            month_input = (input("Please input the name of the month to filter by, or ""all"" to apply no month filter")).lower()
             if month_input in month_set:
                 print('Thanks!')
                 break;
@@ -43,7 +43,7 @@ def get_filters():
 
     while True:
         try:
-            day_input = (input("Please input the day to filter by, or ""all"" to apply no day filter")).lower() 
+            day_input = (input("Please input the day to filter by, or ""all"" to apply no day filter")).lower()
             if day_input in day_set:
                 print('Thanks!')
                 break;
@@ -60,7 +60,7 @@ def get_filters():
 def load_data(city, month, day):
     # Load csv directly into Pandas DataFrame
     t1 = pd.read_csv(CITY_DATA[city])
-    # Change Date and Time fields from Object to Date time 
+    # Change Date and Time fields from Object to Date time
     t1['Start Time'] = pd.to_datetime(t1['Start Time'])
     t1['End Time'] = pd.to_datetime(t1['End Time'])
     # Create the Month, Day, and Hour fields for later analysis for Times of travel
@@ -72,9 +72,9 @@ def load_data(city, month, day):
         df=t1
     elif month=='all' and day!='all':
         df=t1.loc[(t1.Weekday == day)]
-    elif month!='all' and day=='all':    
+    elif month!='all' and day=='all':
         df=t1.loc[(t1.Month == month)]
-    else:    
+    else:
         df=t1.loc[(t1.Weekday == day) & (t1.Month == month)]
     return df
 
@@ -85,8 +85,8 @@ def view_5_lines(df):
         print(df.iloc[i:i+5])
         response=(input('Continue to see the next 5 lines of the database? Enter Yes or No.')).lower()
         if response=='no': break
-        i+=5 
-        
+        i+=5
+
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -171,7 +171,7 @@ def user_stats(df):
         print('The most senior bike sharer was born in '+str(int(df['Birth Year'].min()))+', the most junior in '+
             str(int(df['Birth Year'].max()))+', with the most common birth year being '+str(int(df['Birth Year'].mean()))+'.')
     else:
-        print('Sorry, birth year data is not captured for this city')    
+        print('Sorry, birth year data is not captured for this city')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -193,5 +193,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-
