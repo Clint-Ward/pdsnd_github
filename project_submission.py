@@ -16,6 +16,7 @@ DAY_DATA={ 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday'
 MONTH_DATA={1:  'January' , 2:  'February' , 3:  'March' , 4:  'April' , 5:  'May' , 6:  'June' , 7:  'July' ,
             8:  'August' , 9:  'September' , 10:  'October' , 11:  'November' , 12:  'December' }
 #Fuctions
+#Consider changing the get_filters function to run on a loop with a dictionary input as the structure is repeated
 def get_filters():
     # input city
     while True:
